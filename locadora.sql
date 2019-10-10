@@ -11,6 +11,7 @@ CREATE TABLE tbCliente(
 	CONSTRAINT pk_tbCliente PRIMARY KEY(codigo_cli)
 )
 
+
 --criando a tabela categoria
 CREATE TABLE tbCategoria(
 	codigo_categoria INT PRIMARY KEY,
@@ -60,3 +61,47 @@ CREATE TABLE tbEmprestimo_devolucao(
 	CONSTRAINT fk_tbEmprestimo_tbFilme FOREIGN KEY(codigo_filme)
 			   REFERENCES tbFilme(codigo_filme)
 )
+
+--exercicio 3
+-- 1. alterando o nome de uma tabela
+--alterando o nome da tabela cliente
+ALTER TABLE tbCliente RENAME TO Cliente
+
+-- 2. alterar o nome de uma coluna da tabela
+-- alterando o nome da coluna de nome_cli para nome_cliente
+ALTER TABLE Cliente RENAME COLUMN nome_cli TO nome_cliente
+
+-- 3. remover uma tabela
+-- criado a tabela teste e removido em seguida
+CREATE TABLE teste(
+	id INT PRIMARY KEY,
+	nome VARCHAR(10)
+)
+
+DROP TABLE teste
+
+-- 4. inserir uma nova tabela
+-- criado uma tabela rotulo
+CREATE TABLE rotulo(
+	id INT PRIMARY KEY,
+	nome VARCHAR(10)
+)
+
+-- 5. remover uma coluna
+-- removendo a coluna nome
+ALTER TABLE rotulo DROP COLUMN nome
+
+-- 6. inserir uma nova coluna em uma tabela
+-- adicionado a coluna nome
+ALTER TABLE rotulo ADD COLUMN nome VARCHAR(10)
+
+-- 7. inserir uma restricao na tabela
+-- setando a coluna nome para nao aceitar valores nulos
+ALTER TABLE rotulo ALTER COLUMN nome SET NOT NULL
+
+-- 8. alterar o tipo de dados de uma coluna
+-- alterando o tipo da coluna nome de VARCHAR para CHAR
+ALTER TABLE rotulo ALTER COLUMN nome TYPE CHAR(20)
+
+-- 9. definir o valor padrao de uma coluna(DEFAULT)
+ALTER TABLE rotulo ALTER COLUMN nome SET DEFAULT 'Marcos'
