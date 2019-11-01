@@ -21,6 +21,12 @@ CREATE TABLE automovel(
     codCliente integer references cliente(codigo) NOT NULL
 );
 
+CREATE TABLE valor_automovel(
+    id_placa VARCHAR(8) PRIMARY KEY,
+    valor FLOAT,
+    idPlaca VARCHAR(8) references automovel(placa) NOT NULL 
+);
+
 CREATE TABLE ocorrencia (
     numero SERIAL PRIMARY KEY,
     local VARCHAR(50),
@@ -28,7 +34,6 @@ CREATE TABLE ocorrencia (
     data date,
     autoPlaca VARCHAR(8) references automovel(placa) NOT NULL
 );
-
 
 INSERT INTO cliente(nome, idade, rg) VALUES
 ('Bruna', 25, 20700),
@@ -44,6 +49,13 @@ INSERT INTO automovel(placa, renavan, anofab, fabricante, modelo, codCliente) VA
 ('aaa3333', 5000000, 2013,'Ford', 'focus', 2),
 ('aaa4444', 300000,  2012,'Ford', 'ka',3),
 ('aaa5555', 3000,    2018,'fiat', 'punto',4);
+
+INSERT INTO valor_automovel VALUES
+('aaa1111', 32000.00),
+('aaa2222', 40000.00),
+('aaa3333', 53000.00),
+('aaa4444', 22000.00),
+('aaa5555', 65000.00);
 
 INSERT INTO ocorrencia (descricao, autoPlaca) VALUES
 ('colisao lateral na 410 Norte', 'aaa3333'),
